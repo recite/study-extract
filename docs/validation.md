@@ -77,5 +77,5 @@ repository and private pilot artifacts are preserved at
 `/Users/soodoku/Documents/GitHub/themains/study-extract`; move the repository to
 `/Users/soodoku/Documents/GitHub/recite/study-extract` from a writable workspace.
 No source-repository files were changed. Code and documentation are pushed to the
-private [recite/study-extract repository](https://github.com/recite/study-extract).
+public [recite/study-extract repository](https://github.com/recite/study-extract).
 Original papers, imported annotations and private pilot artifacts remain local.
