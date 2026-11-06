@@ -14,7 +14,7 @@ from study_extract.export import export_csv, review_html
 from study_extract.ingest import ingest_manifest
 from study_extract.io import read_json, write_json
 from study_extract.models import Extraction, Packet
-from study_extract.references import reference_inventory
+from study_extract.references import EstimateMapping, import_estimates, reference_inventory
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -49,6 +49,13 @@ def main(argv: list[str] | None = None) -> int:
     command = sub.add_parser("import-reference")
     for name in ["quota-spending", "quota-assignment", "face-of-crime", "output"]:
         command.add_argument(f"--{name}", type=Path, required=True)
+    command = sub.add_parser("import-estimates")
+    command.add_argument("coding", type=Path)
+    command.add_argument("--packet", type=Path, required=True)
+    command.add_argument("--source-id", required=True)
+    command.add_argument("--version", required=True)
+    command.add_argument("--mapping", type=Path, required=True)
+    command.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
         if args.command == "schema":
@@ -61,6 +68,23 @@ def main(argv: list[str] | None = None) -> int:
             write_json(
                 args.output,
                 reference_inventory(args.quota_spending, args.quota_assignment, args.face_of_crime),
+            )
+        elif args.command == "import-estimates":
+            packet = Packet.model_validate(read_json(args.packet))
+            source = next((d for d in packet.documents if d.source_id == args.source_id), None)
+            if source is None:
+                raise ValueError("Source ID is absent from the packet")
+            mapping = read_json(args.mapping)
+            if not isinstance(mapping, list):
+                raise ValueError("Estimate mapping must be a JSON list")
+            write_json(
+                args.output,
+                import_estimates(
+                    args.coding,
+                    source,
+                    args.version,
+                    [EstimateMapping.model_validate(row) for row in mapping],
+                ),
             )
         elif args.command in ("prepare", "extract"):
             packet = Packet.model_validate(read_json(args.packet))

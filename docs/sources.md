@@ -1,8 +1,9 @@
 # Source ledger and crosswalk
 
-Consulted 2026-11-05. Local repositories were read only. Original PDFs, reference
-annotations and manuscripts have not been uploaded to a model service by this
-project's development work.
+Consulted 2026-11-05. Source repositories were read only. This assistant inspected
+local extracted text and rendered source pages. The separate Codex extraction
+process failed during local initialization; it produced no model response. Original
+research materials remain excluded from the distributable repository.
 
 | Source | Contribution to the design |
 |---|---|

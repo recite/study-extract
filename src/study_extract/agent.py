@@ -143,16 +143,21 @@ class CodexBackend:
             (directory / "events.jsonl").open("w") as out,
             (directory / "stderr.txt").open("w") as err,
         ):
-            subprocess.run(
-                command,
-                input=(directory / "prompt.txt").read_text(),
-                text=True,
-                cwd=directory,
-                stdout=out,
-                stderr=err,
-                timeout=timeout,
-                check=True,
-            )
+            try:
+                subprocess.run(
+                    command,
+                    input=(directory / "prompt.txt").read_text(),
+                    text=True,
+                    cwd=directory,
+                    stdout=out,
+                    stderr=err,
+                    timeout=timeout,
+                    check=True,
+                )
+            except subprocess.CalledProcessError as exc:
+                raise ValueError(
+                    f"Codex exited with status {exc.returncode}; inspect {directory / 'stderr.txt'}"
+                ) from exc
 
 
 def validate_profile(extraction: Extraction, profile: str) -> None:

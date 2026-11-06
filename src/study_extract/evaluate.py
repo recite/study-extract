@@ -56,6 +56,7 @@ class ReferenceRecord(StrictModel):
     kind: Kind
     anchors: dict[str, list[Scalar]] = Field(min_length=1)
     expected: dict[str, ExpectedCell] = Field(min_length=1)
+    origin: "ReferenceOrigin | None" = None
 
     @model_validator(mode="after")
     def validate_fields_and_anchors(self) -> Self:
@@ -91,6 +92,13 @@ class ReferenceRecord(StrictModel):
                 if not valid:
                     raise ValueError(f"Reference {name} requires {spec.type}")
         return self
+
+
+class ReferenceOrigin(StrictModel):
+    artifact: str
+    artifact_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    pointer: str
+    version: str
 
 
 class ReferenceSet(StrictModel):

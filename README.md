@@ -53,6 +53,7 @@ quotations and locators. It labels semantic support as unreviewed.
 - [Design and field groups](docs/design.md)
 - [Evaluation protocol](docs/evaluation.md)
 - [Validation and pilot status](docs/validation.md)
+- [Bose–Das development pilot](docs/pilot-bose-das.md)
 - [Sources and repository crosswalk](docs/sources.md)
 - [Machine-readable field dictionary](schemas/fields.json)
 - [Extraction JSON Schema](schemas/extraction.schema.json)
@@ -88,6 +89,25 @@ directories. They are not distributed with the package. Reviewers should group
 all reports of a study before assigning development/test splits. Some source
 annotations have already been inspected during design; those studies are not an
 unseen test set.
+
+`import-estimates` turns explicitly mapped quota_spending coding rows into
+evaluation candidates. A mapping identifies the zero-based coding row and its
+descriptive anchors; numeric target values cannot identify a row. For example:
+
+```json
+[{"index": 0, "anchors": {"outcome": ["Log of job cards issued"], "population": ["Phase I; Full sample"], "specification": ["Random effects; Table 4, column 1"]}}]
+```
+
+```sh
+uv run study-extract import-estimates /path/to/coding.yaml --packet local/packet.json --source-id doc_HASH --version rde2018 --mapping local/mapping.json --output local/reference-candidates.json
+```
+
+The importer checks the study, version and filename; pins the current document
+hash; and retains the coding-file hash and row pointer. It imports available
+estimates, SEs and observation counts. Nulls do not become absence labels, and
+coder-preferred specifications do not become author preferences. All candidates
+remain unadjudicated. Inspect source evidence, record reviewer/rationale and page
+locators, and resolve disagreements before using them as scored references.
 
 ## Development
 

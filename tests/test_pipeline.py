@@ -1,13 +1,14 @@
 import csv
 import json
 import logging
+import subprocess
 from pathlib import Path
 
 import pypdf
 import pytest
 from jsonschema import Draft202012Validator, ValidationError
 
-from study_extract.agent import prepare, run_batch
+from study_extract.agent import CodexBackend, prepare, run_batch
 from study_extract.catalog import CATALOG
 from study_extract.cli import main
 from study_extract.export import export_csv, review_html
@@ -27,6 +28,23 @@ class FixtureBackend:
     def run(self, directory: Path, timeout: float):
         self.calls += 1
         write_json(directory / "response.json", self.extraction)
+
+
+def test_codex_failure_points_to_preserved_logs(tmp_path, monkeypatch):
+    (tmp_path / "prompt.txt").write_text("Synthetic source-only prompt")
+
+    def fail(command, **kwargs):
+        assert "--sandbox" in command and "read-only" in command
+        assert "--ignore-user-config" in command
+        assert "--output-schema" in command
+        assert kwargs["input"] == "Synthetic source-only prompt"
+        kwargs["stderr"].write("Initialization failure")
+        raise subprocess.CalledProcessError(1, command)
+
+    monkeypatch.setattr(subprocess, "run", fail)
+    with pytest.raises(ValueError, match="inspect.*stderr.txt"):
+        CodexBackend("fixture-model").run(tmp_path, timeout=10)
+    assert (tmp_path / "stderr.txt").read_text() == "Initialization failure"
 
 
 def complete_profile(extraction):

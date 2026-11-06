@@ -1,12 +1,12 @@
 # Validation and pilot status
 
-Validated locally on 2026-11-05. No live model extraction or empirical accuracy
-evaluation has been run. The current implementation is a testable first version,
-not a validated research coding system.
+Validated locally on 2026-11-05. An assistant-authored Bose–Das development pilot
+is available; no autonomous extraction or held-out accuracy evaluation has been
+completed. The current implementation is not a validated research coding system.
 
 ## Software checks
 
-- `make check`: Ruff lint/imports/format, mypy, 63 pytest tests, wheel and source
+- `make check`: Ruff lint/imports/format, mypy, 72 pytest tests, wheel and source
   distribution builds pass on macOS with Python 3.13.16.
 - The test suite covers wrong signs and pages,
   source-version mixing, derivation arithmetic, missing values, provisional-gold
@@ -15,8 +15,9 @@ not a validated research coding system.
 - The wheel installs in a separate environment. Its CLI successfully ingests the
   invented example, verifies evidence, evaluates two fixture values, and produces
   a review page. Fixture agreement measures software behavior, not research accuracy.
-- A standard Python 3.13 Linux Docker image passes the same checks. GitHub CI has
-  been configured but not run remotely.
+- All 72 tests, lint, formatting, type checks and builds also pass in a standard
+  Python 3.13 Linux Docker image. Colima was initially stopped and was started
+  for this check. GitHub CI has been configured but not run remotely.
 
 ## Research-material smoke test
 
@@ -38,7 +39,10 @@ The provisional reference inventory contains 23 quota_spending coding files,
 16 quota_assignment claim/audit files, and the face_of_crime table. These are
 file counts, not numbers of independent studies or adjudicated labels. Original
 annotations and source hashes are retained in ignored `local/` files. The
-inventory still needs conversion and adjudication into evaluation reference sets.
+new `import-estimates` command converts explicitly mapped numeric coding rows into
+provisional evaluation references. Six Bose–Das published-version rows have been
+converted; their 18 numeric targets agree with the frozen assisted extraction.
+All remain unadjudicated. See [the pilot report](pilot-bose-das.md).
 
 ## Independent review
 
@@ -50,8 +54,10 @@ performance or independently adjudicate the research corpus.
 
 ## Remaining work
 
-1. Choose the authorized model/backend and run a small live extraction pilot.
-   The Codex adapter has not yet been exercised against a model service.
+1. Run the authorized small Codex pilot using the existing ChatGPT account and
+   configured `gpt-6-astra` model. Two launch attempts failed during local
+   app-server initialization with `Operation not permitted`; no model response
+   or usage report was produced. A session that permits Codex startup is needed.
 2. Inspect source-page images, adjudicate reference cells and record disagreements.
 3. Expand development cases, freeze the pipeline, and evaluate untouched families.
 4. Add OCR/vision and explicit cross-report reconciliation after baseline results.
@@ -66,6 +72,7 @@ citation matching cannot determine whether the cited evidence entails a cell.
 
 The requested parent directory is `/Users/soodoku/Documents/GitHub/recite`.
 This session can read it but cannot create a repository there. The new local
-repository is staged at `/private/tmp/study-extract`; move it to
+repository and private pilot artifacts are preserved at
+`/Users/soodoku/Documents/GitHub/themains/study-extract`; move the repository to
 `/Users/soodoku/Documents/GitHub/recite/study-extract` from a writable workspace.
 No original repository files were changed and no GitHub remote was created.
