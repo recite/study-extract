@@ -17,7 +17,8 @@ completed. The current implementation is not a validated research coding system.
   a review page. Fixture agreement measures software behavior, not research accuracy.
 - All 72 tests, lint, formatting, type checks and builds also pass in a standard
   Python 3.13 Linux Docker image. Colima was initially stopped and was started
-  for this check. GitHub CI has been configured but not run remotely.
+  for this check. Hosted CI results are available in
+  [GitHub Actions](https://github.com/recite/study-extract/actions/workflows/ci.yml).
 
 ## Research-material smoke test
 
@@ -75,4 +76,6 @@ This session can read it but cannot create a repository there. The new local
 repository and private pilot artifacts are preserved at
 `/Users/soodoku/Documents/GitHub/themains/study-extract`; move the repository to
 `/Users/soodoku/Documents/GitHub/recite/study-extract` from a writable workspace.
-No original repository files were changed and no GitHub remote was created.
+No source-repository files were changed. Code and documentation are pushed to the
+private [recite/study-extract repository](https://github.com/recite/study-extract).
+Original papers, imported annotations and private pilot artifacts remain local.

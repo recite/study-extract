@@ -19,6 +19,11 @@ classifiers = [
 ]
 dependencies = ["pydantic>=2.10,<3", "pypdf>=6,<7", "fonttools>=4.63,<5", "PyYAML>=6,<7"]
 
+[project.urls]
+Source = "https://github.com/recite/study-extract"
+Issues = "https://github.com/recite/study-extract/issues"
+Documentation = "https://github.com/recite/study-extract/blob/main/README.md"
+
 [project.scripts]
 study-extract = "study_extract.cli:main"
 
