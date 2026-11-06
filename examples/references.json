@@ -1,0 +1,42 @@
+{
+  "records": [
+    {
+      "reference_id": "synthetic-e1",
+      "study_id": "synthetic-example",
+      "source_sha256": "f0c1b96c8a33ffce84a5feb0f744ac6368d77354d52cd04b999e613396918fe0",
+      "kind": "estimate",
+      "anchors": {
+        "outcome": [
+          "Drinking water installations"
+        ]
+      },
+      "expected": {
+        "value": {
+          "state": "present",
+          "value": -0.2,
+          "accepted_values": [],
+          "absolute_tolerance": 0.0,
+          "evidence_pages": [
+            1
+          ],
+          "adjudicated": true,
+          "reviewer": "synthetic fixture author",
+          "rationale": "Invented test text explicitly specifies this value; not empirical validation."
+        },
+        "standard_error": {
+          "state": "present",
+          "value": 0.08,
+          "accepted_values": [],
+          "absolute_tolerance": 0.0,
+          "evidence_pages": [
+            1
+          ],
+          "adjudicated": true,
+          "reviewer": "synthetic fixture author",
+          "rationale": "Invented test text explicitly specifies this value; not empirical validation."
+        }
+      }
+    }
+  ],
+  "complete_scopes": []
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1.0",
+  "records": [
+    {
+      "record_id": "doc_f0c1b96c8a33ffce84a5:e1",
+      "study_id": "synthetic-example",
+      "source_id": "doc_f0c1b96c8a33ffce84a5",
+      "kind": "estimate",
+      "fields": {
+        "outcome": {
+          "value": "Drinking water installations",
+          "state": "present",
+          "basis": "reported",
+          "evidence": [
+            {
+              "source_id": "doc_f0c1b96c8a33ffce84a5",
+              "pdf_page": 1,
+              "quote": "Table 1. Drinking water installations, women-reserved minus unreserved villages.",
+              "role": "row_label",
+              "printed_page": null,
+              "table": null,
+              "row": null,
+              "column": null
+            }
+          ],
+          "rationale": null,
+          "derivation": null
+        },
+        "value": {
+          "value": -0.2,
+          "state": "present",
+          "basis": "reported",
+          "evidence": [
+            {
+              "source_id": "doc_f0c1b96c8a33ffce84a5",
+              "pdf_page": 1,
+              "quote": "The reported difference is -0.20 installations, with a standard error of 0.08.",
+              "role": "value",
+              "printed_page": null,
+              "table": null,
+              "row": null,
+              "column": null
+            },
+            {
+              "source_id": "doc_f0c1b96c8a33ffce84a5",
+              "pdf_page": 1,
+              "quote": "Table 1. Drinking water installations, women-reserved minus unreserved villages.",
+              "role": "row_label",
+              "printed_page": null,
+              "table": null,
+              "row": null,
+              "column": null
+            }
+          ],
+          "rationale": null,
+          "derivation": null
+        },
+        "standard_error": {
+          "value": 0.08,
+          "state": "present",
+          "basis": "reported",
+          "evidence": [
+            {
+              "source_id": "doc_f0c1b96c8a33ffce84a5",
+              "pdf_page": 1,
+              "quote": "The reported difference is -0.20 installations, with a standard error of 0.08.",
+              "role": "value",
+              "printed_page": null,
+              "table": null,
+              "row": null,
+              "column": null
+            },
+            {
+              "source_id": "doc_f0c1b96c8a33ffce84a5",
+              "pdf_page": 1,
+              "quote": "Table 1. Drinking water installations, women-reserved minus unreserved villages.",
+              "role": "row_label",
+              "printed_page": null,
+              "table": null,
+              "row": null,
+              "column": null
+            }
+          ],
+          "rationale": null,
+          "derivation": null
+        }
+      },
+      "links": []
+    }
+  ],
+  "coverage": [
+    {
+      "source_id": "doc_f0c1b96c8a33ffce84a5",
+      "pages_read": [
+        1
+      ],
+      "unreadable_pages": [],
+      "missing_materials": [],
+      "scope": "Original synthetic fixture: three illustrative fields only",
+      "exhaustive": false
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Synthetic example for exercising the software, not a real research paper.
+Table 1. Drinking water installations, women-reserved minus unreserved villages.
+The reported difference is -0.20 installations, with a standard error of 0.08.
+There are 250 villages in the analysis. These numbers were invented as a test fixture.

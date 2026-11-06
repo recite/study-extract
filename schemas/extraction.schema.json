@@ -1,0 +1,397 @@
+{
+  "$defs": {
+    "Cell": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "state": {
+          "enum": [
+            "present",
+            "not_found",
+            "not_applicable",
+            "unreadable",
+            "conflicting"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "basis": {
+          "default": "reported",
+          "enum": [
+            "reported",
+            "derived",
+            "reviewer_judgment"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "derivation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Derivation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "value",
+        "state"
+      ],
+      "title": "Cell",
+      "type": "object"
+    },
+    "CellRef": {
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "title": "Record Id",
+          "type": "string"
+        },
+        "field": {
+          "title": "Field",
+          "type": "string"
+        }
+      },
+      "required": [
+        "record_id",
+        "field"
+      ],
+      "title": "CellRef",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "pages_read": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Pages Read",
+          "type": "array"
+        },
+        "unreadable_pages": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Unreadable Pages",
+          "type": "array"
+        },
+        "missing_materials": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Materials",
+          "type": "array"
+        },
+        "scope": {
+          "minLength": 1,
+          "title": "Scope",
+          "type": "string"
+        },
+        "exhaustive": {
+          "const": false,
+          "default": false,
+          "title": "Exhaustive",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source_id",
+        "pages_read",
+        "unreadable_pages",
+        "missing_materials",
+        "scope"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "Derivation": {
+      "additionalProperties": false,
+      "properties": {
+        "operation": {
+          "enum": [
+            "difference",
+            "ratio",
+            "percent_to_proportion",
+            "z_from_estimate_se"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/CellRef"
+          },
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "assumptions": {
+          "minLength": 1,
+          "title": "Assumptions",
+          "type": "string"
+        }
+      },
+      "required": [
+        "operation",
+        "inputs",
+        "assumptions"
+      ],
+      "title": "Derivation",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "pdf_page": {
+          "minimum": 1,
+          "title": "Pdf Page",
+          "type": "integer"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "role": {
+          "default": "context",
+          "enum": [
+            "value",
+            "row_label",
+            "column_label",
+            "footnote",
+            "context"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "printed_page": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Printed Page"
+        },
+        "table": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Table"
+        },
+        "row": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Row"
+        },
+        "column": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Column"
+        }
+      },
+      "required": [
+        "source_id",
+        "pdf_page",
+        "quote"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Link": {
+      "additionalProperties": false,
+      "properties": {
+        "relation": {
+          "enum": [
+            "outcome",
+            "sample",
+            "design",
+            "supports",
+            "contradicts",
+            "same_quantity"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "record_id": {
+          "title": "Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "relation",
+        "record_id"
+      ],
+      "title": "Link",
+      "type": "object"
+    },
+    "Record": {
+      "additionalProperties": false,
+      "properties": {
+        "record_id": {
+          "minLength": 1,
+          "title": "Record Id",
+          "type": "string"
+        },
+        "study_id": {
+          "minLength": 1,
+          "title": "Study Id",
+          "type": "string"
+        },
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "study",
+            "design",
+            "sample",
+            "outcome",
+            "estimate",
+            "diagnostic",
+            "claim",
+            "comparison"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "fields": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Cell"
+          },
+          "minProperties": 1,
+          "title": "Fields",
+          "type": "object"
+        },
+        "links": {
+          "items": {
+            "$ref": "#/$defs/Link"
+          },
+          "title": "Links",
+          "type": "array"
+        }
+      },
+      "required": [
+        "record_id",
+        "study_id",
+        "source_id",
+        "kind",
+        "fields"
+      ],
+      "title": "Record",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0",
+      "default": "0.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/Record"
+      },
+      "title": "Records",
+      "type": "array"
+    },
+    "coverage": {
+      "items": {
+        "$ref": "#/$defs/Coverage"
+      },
+      "title": "Coverage",
+      "type": "array"
+    }
+  },
+  "required": [
+    "records",
+    "coverage"
+  ],
+  "title": "Extraction",
+  "type": "object"
+}

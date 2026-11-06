@@ -1,0 +1,502 @@
+{
+  "study": {
+    "title": {
+      "type": "text",
+      "description": "Title of this report, preserving its version."
+    },
+    "authors": {
+      "type": "text_list",
+      "description": "Authors as reported."
+    },
+    "year": {
+      "type": "integer",
+      "description": "Year of this document version, not the first version of the study."
+    },
+    "setting": {
+      "type": "text",
+      "description": "Country, region, institutions, and relevant time period."
+    },
+    "research_question": {
+      "type": "text",
+      "description": "Question addressed by this study."
+    },
+    "registration": {
+      "type": "text",
+      "description": "Registration/PAP identifier, date, and timing relative to data."
+    },
+    "data_availability": {
+      "type": "text",
+      "description": "Reported data availability and exact access restrictions."
+    },
+    "code_availability": {
+      "type": "text",
+      "description": "Reported code availability."
+    },
+    "funding": {
+      "type": "text",
+      "description": "Funding statement; absence of a located statement is not no funding."
+    },
+    "conflicts_of_interest": {
+      "type": "text",
+      "description": "Authors' reported conflict statement."
+    }
+  },
+  "design": {
+    "design_type": {
+      "type": "text",
+      "description": "Reported research design; reviewer classification must be marked."
+    },
+    "estimand": {
+      "type": "text",
+      "description": "Target quantity: population, contrast, weighting and time horizon."
+    },
+    "target_population": {
+      "type": "text",
+      "description": "Population to which the authors target their claim."
+    },
+    "treatment": {
+      "type": "text",
+      "description": "Assigned intervention or exposure, including dose and duration."
+    },
+    "comparison": {
+      "type": "text",
+      "description": "Reference condition and treatment contrast orientation."
+    },
+    "assignment_unit": {
+      "type": "text",
+      "description": "Unit assigned treatment, separate from observation unit."
+    },
+    "assignment_procedure": {
+      "type": "text",
+      "description": "Actual described allocation procedure and constraints."
+    },
+    "assignment_pool": {
+      "type": "text",
+      "description": "Pool within which assignment takes place, e.g. block/category."
+    },
+    "assignment_probability": {
+      "type": "text",
+      "description": "Reported probabilities, strata, and variation across units."
+    },
+    "assignment_category": {
+      "type": "text",
+      "description": "Reservation or treatment category, without inferred splitting."
+    },
+    "identifying_assumption": {
+      "type": "text",
+      "description": "Authors' assumption connecting comparison to causal claim."
+    },
+    "compliance": {
+      "type": "text",
+      "description": "Assignment versus receipt; first stage and noncompliance handling."
+    },
+    "interference": {
+      "type": "text",
+      "description": "Spillover/exposure mapping assumptions and relevant evidence."
+    },
+    "attrition": {
+      "type": "text",
+      "description": "Loss to follow-up by arm, denominators, timing, and handling."
+    },
+    "preregistered_analysis": {
+      "type": "text",
+      "description": "What was prespecified and how timing is established."
+    },
+    "analysis_deviations": {
+      "type": "text",
+      "description": "Reported departures from plan; do not infer undisclosed intent."
+    },
+    "running_variable": {
+      "type": "text",
+      "description": "RD running variable, scale, and threshold."
+    },
+    "bandwidth": {
+      "type": "text",
+      "description": "RD bandwidth, selection method, kernel and polynomial order."
+    },
+    "instrument": {
+      "type": "text",
+      "description": "IV instrument and authors' relevance/exclusion arguments."
+    },
+    "treatment_timing": {
+      "type": "text",
+      "description": "Timing/cohorts, anticipation and comparison periods for DiD."
+    }
+  },
+  "sample": {
+    "population": {
+      "type": "text",
+      "description": "Population actually sampled or analyzed."
+    },
+    "geography": {
+      "type": "text",
+      "description": "Geographic scope, preserving state/district/market distinctions."
+    },
+    "period": {
+      "type": "text",
+      "description": "Collection/coverage dates, not publication date."
+    },
+    "sampling_method": {
+      "type": "text",
+      "description": "Sampling frame, selection and representativeness claims."
+    },
+    "observation_unit": {
+      "type": "text",
+      "description": "Unit counted as an observation."
+    },
+    "n_observations": {
+      "type": "integer",
+      "description": "Observation count in this exact sample."
+    },
+    "n_units": {
+      "type": "integer",
+      "description": "Distinct substantive units; not automatically independent."
+    },
+    "n_assigned": {
+      "type": "integer",
+      "description": "Units assigned, before exclusions/attrition."
+    },
+    "n_treated": {
+      "type": "integer",
+      "description": "Treated units in the stated denominator."
+    },
+    "n_control": {
+      "type": "integer",
+      "description": "Control units in the stated denominator."
+    },
+    "n_clusters": {
+      "type": "integer",
+      "description": "Total clusters in this sample."
+    },
+    "n_treated_clusters": {
+      "type": "integer",
+      "description": "Treated clusters, when explicitly reported."
+    },
+    "exclusions": {
+      "type": "text",
+      "description": "Eligibility and analysis exclusions with timing and reasons."
+    },
+    "weights": {
+      "type": "text",
+      "description": "Sampling/analysis weights and their target population."
+    },
+    "overlap": {
+      "type": "text",
+      "description": "Shared people, sites, controls, or data with other records/studies."
+    }
+  },
+  "outcome": {
+    "name": {
+      "type": "text",
+      "description": "Reported outcome name."
+    },
+    "construct": {
+      "type": "text",
+      "description": "Concept intended to be measured; separate from operational measure."
+    },
+    "definition": {
+      "type": "text",
+      "description": "Exact operational definition, question wording or coding rules."
+    },
+    "family": {
+      "type": "text",
+      "description": "Outcome family; analyst harmonization is a reviewer judgment."
+    },
+    "data_source": {
+      "type": "text",
+      "description": "Survey, administrative record, audit, media coding, etc."
+    },
+    "instrument": {
+      "type": "text",
+      "description": "Question, scale, coder procedure or measurement instrument."
+    },
+    "units": {
+      "type": "text",
+      "description": "Units and scale: counts, proportions, percent, pp, logs, etc."
+    },
+    "direction": {
+      "type": "text",
+      "description": "Meaning of larger values, without changing the reported sign."
+    },
+    "timepoint": {
+      "type": "text",
+      "description": "Measurement period or follow-up after treatment."
+    },
+    "numerator": {
+      "type": "text",
+      "description": "Who/what is counted in a share; event/person/story distinction."
+    },
+    "denominator": {
+      "type": "text",
+      "description": "Exact eligible population, including treatment of unknown categories."
+    },
+    "missing_handling": {
+      "type": "text",
+      "description": "Unknown race, missing outcomes, imputation and exclusions."
+    },
+    "reliability": {
+      "type": "text",
+      "description": "Coder agreement or measurement reliability, sample and metric."
+    },
+    "primary_status": {
+      "type": "text",
+      "description": "Authors' primary/secondary/exploratory designation and basis."
+    }
+  },
+  "estimate": {
+    "outcome": {
+      "type": "text",
+      "description": "Outcome label for this estimate, preserving subgroup and scale."
+    },
+    "estimand": {
+      "type": "text",
+      "description": "ATE/ITT/LATE/ATT/association/share/mean/etc.; do not infer causality."
+    },
+    "population": {
+      "type": "text",
+      "description": "Exact sample/subgroup for the reported quantity."
+    },
+    "contrast": {
+      "type": "text",
+      "description": "Treatment minus control or other orientation; descriptive if no contrast."
+    },
+    "timepoint": {
+      "type": "text",
+      "description": "Outcome measurement time for this estimate."
+    },
+    "specification": {
+      "type": "text",
+      "description": "Model, table column, estimator, adjustments and sample restrictions."
+    },
+    "measure": {
+      "type": "text",
+      "description": "Coefficient, mean difference, proportion, RR, OR, log OR, etc."
+    },
+    "value": {
+      "type": "number",
+      "description": "Signed estimate in the paper's units; never harmonize silently."
+    },
+    "units": {
+      "type": "text",
+      "description": "Exact reported units, retaining percent versus percentage points."
+    },
+    "standard_error": {
+      "type": "number",
+      "description": "SE, not SD or interval width; no inference from stars."
+    },
+    "standard_deviation": {
+      "type": "number",
+      "description": "SD of the variable, distinct from uncertainty of the estimate."
+    },
+    "interval_lower": {
+      "type": "number",
+      "description": "Reported lower endpoint on the stated scale."
+    },
+    "interval_upper": {
+      "type": "number",
+      "description": "Reported upper endpoint on the stated scale."
+    },
+    "interval_level": {
+      "type": "number",
+      "description": "Coverage/credibility level as a fraction, e.g. 0.95."
+    },
+    "interval_type": {
+      "type": "text",
+      "description": "Confidence/credible/prediction; method and sidedness."
+    },
+    "p_value": {
+      "type": "text",
+      "description": "Preserve inequalities and rounding, e.g. <0.001 or 0.000."
+    },
+    "test_statistic": {
+      "type": "number",
+      "description": "Reported t/z/F/chi-square statistic; type belongs in test_type."
+    },
+    "test_type": {
+      "type": "text",
+      "description": "Test/statistic type, null, sidedness and reference distribution."
+    },
+    "degrees_of_freedom": {
+      "type": "number",
+      "description": "Reported df; never replace with N or cluster count."
+    },
+    "n_observations": {
+      "type": "integer",
+      "description": "Exact estimation sample, not full-study N."
+    },
+    "n_clusters": {
+      "type": "integer",
+      "description": "Exact cluster count for this estimate."
+    },
+    "uncertainty_method": {
+      "type": "text",
+      "description": "Robust/clustered/RI/bootstrap/Bayesian, corrections and level."
+    },
+    "cluster_unit": {
+      "type": "text",
+      "description": "Clustering unit(s), separate from assignment unit."
+    },
+    "covariates": {
+      "type": "text_list",
+      "description": "Adjustment variables including potential mediators."
+    },
+    "fixed_effects": {
+      "type": "text_list",
+      "description": "Reported fixed effects."
+    },
+    "weights": {
+      "type": "text",
+      "description": "Weighting used in this specification."
+    },
+    "control_mean": {
+      "type": "number",
+      "description": "Control mean for the same sample/outcome/time."
+    },
+    "control_sd": {
+      "type": "number",
+      "description": "Control SD for the same sample/outcome/time."
+    },
+    "multiplicity": {
+      "type": "text",
+      "description": "Adjustment, family and prespecified/exploratory status."
+    },
+    "preferred": {
+      "type": "boolean",
+      "description": "Authors explicitly designate this specification preferred."
+    },
+    "dependence_group": {
+      "type": "text",
+      "description": "Shared sample/control/outcome dependence; judgment when inferred."
+    }
+  },
+  "diagnostic": {
+    "assumption": {
+      "type": "text",
+      "description": "Assumption or implementation question addressed."
+    },
+    "diagnostic_type": {
+      "type": "text",
+      "description": "Balance, reconstruction, transitions, density, pretrends, etc."
+    },
+    "procedure": {
+      "type": "text",
+      "description": "Test actually performed, separate from recommended tests."
+    },
+    "sample": {
+      "type": "text",
+      "description": "Diagnostic sample, period, groups and geographic resolution."
+    },
+    "null_hypothesis": {
+      "type": "text",
+      "description": "Null actually tested; not every check has a statistical null."
+    },
+    "statistic": {
+      "type": "number",
+      "description": "Reported diagnostic statistic."
+    },
+    "statistic_type": {
+      "type": "text",
+      "description": "Statistic type and units."
+    },
+    "p_value": {
+      "type": "text",
+      "description": "Reported p-value including bounds/rounding."
+    },
+    "n_observations": {
+      "type": "integer",
+      "description": "Sample used in this diagnostic."
+    },
+    "n_groups": {
+      "type": "integer",
+      "description": "Number of assignment/geographic groups used."
+    },
+    "authors_interpretation": {
+      "type": "text",
+      "description": "What authors conclude, retaining qualifications."
+    },
+    "scope_limit": {
+      "type": "text",
+      "description": "What the test does not address; mark reviewer judgments."
+    },
+    "replication_status": {
+      "type": "text",
+      "description": "Located, source-rechecked or reproduced; evidence for status."
+    }
+  },
+  "claim": {
+    "text": {
+      "type": "text",
+      "description": "Authors' claim in context, including qualifications."
+    },
+    "claim_type": {
+      "type": "text",
+      "description": "Finding, mechanism, identifying premise, normative or contextual."
+    },
+    "mechanism": {
+      "type": "text",
+      "description": "Proposed mechanism; distinguish a label from its empirical test."
+    },
+    "evidence_status": {
+      "type": "text",
+      "description": "Asserted, speculated, tested, or mixed; give the coding rationale."
+    },
+    "stance": {
+      "type": "text",
+      "description": "Normative stance when authors state one, not the reviewer's preference."
+    },
+    "scope": {
+      "type": "text",
+      "description": "Population, place, period, office/category and applicable conditions."
+    },
+    "support": {
+      "type": "text",
+      "description": "Own test, theoretical argument, legal rule or prior-study citation."
+    },
+    "qualification": {
+      "type": "text",
+      "description": "Limits and counterevidence stated alongside the claim."
+    }
+  },
+  "comparison": {
+    "quantity": {
+      "type": "text",
+      "description": "What is compared, e.g. Black perpetrator share."
+    },
+    "observed_value": {
+      "type": "number",
+      "description": "Reported study value in stated units."
+    },
+    "benchmark_value": {
+      "type": "number",
+      "description": "Reported comparison value in stated units."
+    },
+    "units": {
+      "type": "text",
+      "description": "Units of both values; mismatch must remain explicit."
+    },
+    "benchmark_source": {
+      "type": "text",
+      "description": "Arrests, victimization, population or other comparison source."
+    },
+    "observed_denominator": {
+      "type": "text",
+      "description": "Denominator and missing-category handling for observed value."
+    },
+    "benchmark_denominator": {
+      "type": "text",
+      "description": "Benchmark denominator; arrests are not all offending."
+    },
+    "observed_scope": {
+      "type": "text",
+      "description": "Observed geography, time, crime types and population."
+    },
+    "benchmark_scope": {
+      "type": "text",
+      "description": "Benchmark geography, time, crime types and population."
+    },
+    "comparability": {
+      "type": "text",
+      "description": "Authors' qualification or explicitly labeled reviewer assessment."
+    }
+  }
+}
